@@ -2,6 +2,7 @@ package castledecorations;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import castledecorations.block.BlockFountain;
 import castledecorations.client.CastleDecorationsTab;
 import castledecorations.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
@@ -26,6 +27,7 @@ public class mod_Castle {
 	public static CreativeTabs tabCastleDecorations = new CastleDecorationsTab(CreativeTabs.getNextID(), "tabCastleDecorations");
 
 	public static BlockFlag flagBlock;
+	public static BlockFountain fountainBlock;
 	
 	@Instance("CastleDecorations")
 	public static mod_Castle instance;
@@ -50,7 +52,10 @@ public class mod_Castle {
 		flagBlock = (BlockFlag) new BlockFlag(450, Material.rock).setUnlocalizedName("flagBlock");
 		GameRegistry.registerBlock(flagBlock, "flagBlock");
 		LanguageRegistry.addName(flagBlock, "Flag");
-
+		
+		fountainBlock = (BlockFountain) new BlockFountain(451).setUnlocalizedName("Fountain");
+		GameRegistry.registerBlock(fountainBlock, "Fountain");
+		LanguageRegistry.addName(fountainBlock, "Fountain");
 
 	}
 
