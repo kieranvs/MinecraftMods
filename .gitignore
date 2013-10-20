@@ -1,6 +1,15 @@
 *.class
 
-# Package Files #
+*.classpath
+
+
 *.jar
+
 *.war
+
 *.ear
+
+
+CastleDecorations/.settings  
+CastleDecorations/bin  
+CastleDecorations/.classpath  
