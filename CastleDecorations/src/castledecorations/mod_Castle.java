@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import castledecorations.block.BlockFlag;
 import castledecorations.block.BlockFountain;
 import castledecorations.block.TileEntityFlag;
+import castledecorations.block.TileEntityFountain;
 import castledecorations.client.CastleDecorationsTab;
 import castledecorations.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
@@ -48,11 +49,10 @@ public class mod_Castle {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		instance = this;
-		
 		proxy.load();
 		proxy.registerRenderers();
 		
-		flagBlock = (BlockFlag) new BlockFlag(450, Material.rock).setUnlocalizedName("flagBlock");
+		flagBlock = (BlockFlag) new BlockFlag(450).setUnlocalizedName("flagBlock");
 		GameRegistry.registerBlock(flagBlock, "flagBlock");
 		LanguageRegistry.addName(flagBlock, "Flag");
 		
@@ -60,8 +60,8 @@ public class mod_Castle {
 		GameRegistry.registerBlock(fountainBlock, "Fountain");
 		LanguageRegistry.addName(fountainBlock, "Fountain");
 		
-		
 		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
+		GameRegistry.registerTileEntity(TileEntityFountain.class, "Fountain");
 	}
 
 	@EventHandler

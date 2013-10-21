@@ -17,7 +17,7 @@ public class BlockFountain extends Block {
 
 	public BlockFountain(int id) {
 		super(id, Material.iron);
-		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(mod_Castle.tabCastleDecorations);
 	}
 	
 	@Override

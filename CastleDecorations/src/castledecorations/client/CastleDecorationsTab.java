@@ -14,7 +14,7 @@ public class CastleDecorationsTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex() {
-		return 1;
+		return 451;
 	}
 
 	@Override
