@@ -10,11 +10,12 @@ import net.minecraft.world.World;
 
 public class BlockFlag extends Block {
 
-	public BlockFlag(int id, Material material) {
-		super(id, material);
+	public BlockFlag(int id) {
+		super(id, Material.wood);
 		setUnlocalizedName("Flag");
 		this.setCreativeTab(mod_Castle.tabCastleDecorations);
-
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 1.0F);
+		this.setHardness(0.5F);
 	}
 	
 	@Override
