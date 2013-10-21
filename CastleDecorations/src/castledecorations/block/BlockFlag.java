@@ -1,5 +1,6 @@
-package castledecorations;
+package castledecorations.block;
 
+import castledecorations.mod_Castle;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -18,7 +19,7 @@ public class BlockFlag extends Block {
 	
 	@Override
 	public TileEntity createTileEntity(World world, int meta) {
-		return new TileEntityBrewingStand();
+		return new TileEntityFlag();
 	}
 
 	@Override

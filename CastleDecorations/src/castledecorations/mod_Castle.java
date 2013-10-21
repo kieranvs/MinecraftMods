@@ -2,7 +2,9 @@ package castledecorations;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import castledecorations.block.BlockFlag;
 import castledecorations.block.BlockFountain;
+import castledecorations.block.TileEntityFlag;
 import castledecorations.client.CastleDecorationsTab;
 import castledecorations.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
@@ -48,6 +50,7 @@ public class mod_Castle {
 		instance = this;
 		
 		proxy.load();
+		proxy.registerRenderers();
 		
 		flagBlock = (BlockFlag) new BlockFlag(450, Material.rock).setUnlocalizedName("flagBlock");
 		GameRegistry.registerBlock(flagBlock, "flagBlock");
@@ -56,7 +59,9 @@ public class mod_Castle {
 		fountainBlock = (BlockFountain) new BlockFountain(451).setUnlocalizedName("Fountain");
 		GameRegistry.registerBlock(fountainBlock, "Fountain");
 		LanguageRegistry.addName(fountainBlock, "Fountain");
-
+		
+		
+		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 	}
 
 	@EventHandler
