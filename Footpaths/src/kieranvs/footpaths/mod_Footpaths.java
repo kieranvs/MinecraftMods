@@ -1,5 +1,7 @@
 package kieranvs.footpaths;
 
+import net.minecraft.creativetab.CreativeTabs;
+import kieranvs.footpaths.client.FootpathsTab;
 import kieranvs.footpaths.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -16,13 +18,13 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class mod_Footpaths {
 
 	public static final String modid = "footpaths";
-	public static final String version = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1";
+	public static final String version = "0.0.1";
 	
 	public static int renderId;
 	
 	public static CreativeTabs tabFootpaths = new FootpathsTab(CreativeTabs.getNextID(), "tabFootpaths");
 
-	public static BlockFlag flagBlock;
+	public static BlockDirtPath dirtPathBlock;
 	
 	@Instance("Footpaths")
 	public static mod_Footpaths instance;
@@ -44,10 +46,10 @@ public class mod_Footpaths {
 		proxy.load();
 		proxy.registerRenderers();
 		
-		flagBlock = (BlockFlag) new BlockFlag().setBlockName("flagBlock");
-		GameRegistry.registerBlock(flagBlock, "flagBlock");
+//		flagBlock = (BlockFlag) new BlockFlag().setBlockName("flagBlock");
+//		GameRegistry.registerBlock(flagBlock, "flagBlock");
 		
-		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
+//		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 	}
 
 	@EventHandler
