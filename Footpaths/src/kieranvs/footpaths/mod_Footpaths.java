@@ -1,6 +1,7 @@
 package kieranvs.footpaths;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 import kieranvs.footpaths.client.FootpathsTab;
 import kieranvs.footpaths.server.ServerProxy;
 import cpw.mods.fml.common.Mod;
@@ -34,6 +35,7 @@ public class mod_Footpaths {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(new ForgeListener());
 	}
 
 	@EventHandler
