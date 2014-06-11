@@ -2,12 +2,13 @@ package kieranvs.footpaths;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockDirtPath extends Block {
 
-	protected BlockDirtPath(Material material) {
-		super(material);
-		// TODO Constructor
+	protected BlockDirtPath() {
+		super(Material.ground);
+		this.setCreativeTab(mod_Footpaths.tabFootpaths);
 	}
 
 }

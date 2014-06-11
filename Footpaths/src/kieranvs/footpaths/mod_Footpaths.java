@@ -46,8 +46,8 @@ public class mod_Footpaths {
 		proxy.load();
 		proxy.registerRenderers();
 		
-//		flagBlock = (BlockFlag) new BlockFlag().setBlockName("flagBlock");
-//		GameRegistry.registerBlock(flagBlock, "flagBlock");
+		dirtPathBlock = (BlockDirtPath) new BlockDirtPath().setBlockName("dirtPathBlock");
+		GameRegistry.registerBlock(dirtPathBlock, "dirtPathBlock");
 		
 //		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 	}

@@ -13,7 +13,7 @@ public class FootpathsTab extends CreativeTabs {
 	
 	@Override
 	public String getTranslatedTabLabel() {
-		return "Castle Decorations";
+		return "Footpaths";
 	}
 
 	@Override
