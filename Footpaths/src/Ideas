@@ -1,0 +1,5 @@
+-Icon side overlay does what we want
+    -Gets called from RenderBlocks.class 
+    -We need top overlay (doesn't exist :( :( )
+    -Make a custom block renderer.
+    -See line 4988 of RenderBlocks
