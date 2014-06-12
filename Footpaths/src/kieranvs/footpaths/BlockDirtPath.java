@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public class BlockDirtPath extends Block {
 	
-	public IIcon tex;
+	public IIcon tex[];
 
 	protected BlockDirtPath() {
 		super(Material.ground);
@@ -42,7 +42,7 @@ public class BlockDirtPath extends Block {
 
 	@Override
 	public boolean isOpaqueCube(){
-		return false;
+		return true;
 	}
 
 	@Override
@@ -58,7 +58,10 @@ public class BlockDirtPath extends Block {
 
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		tex = reg.registerIcon(mod_Footpaths.modid + ":" + "paths_01");
+		tex = new IIcon[16];
+		for(int x = 0; x < 16; x++){
+			tex[x] = reg.registerIcon(mod_Footpaths.modid + ":" + "paths_" + x);
+		}
 	}
 	
 }
