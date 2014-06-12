@@ -22,6 +22,7 @@ public class mod_Footpaths {
 	public static final String version = "0.0.1";
 	
 	public static int renderId;
+	public static int renderPass;
 	
 	public static CreativeTabs tabFootpaths = new FootpathsTab(CreativeTabs.getNextID(), "tabFootpaths");
 

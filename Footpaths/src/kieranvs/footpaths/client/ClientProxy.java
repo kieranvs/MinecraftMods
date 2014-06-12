@@ -10,7 +10,7 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void registerRenderers() {
 		mod_Footpaths.renderId = RenderingRegistry.getNextAvailableRenderId();
-		
+		RenderingRegistry.registerBlockHandler(mod_Footpaths.renderId, new BlockRenderer());
 		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new TileEntityFlagRenderer());
 	}
 
