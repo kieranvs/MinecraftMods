@@ -26,18 +26,17 @@ public class ForgeListener {
 	}
 	
 	public void doTheThing(float fatty, Entity ent, int offsetX, int offsetY, int offsetZ){
-		if(ent.onGround && ent.worldObj.getBlock((int)(ent.posX), (int)(ent.posY) - 1, (int)(ent.posZ)) == Blocks.grass){
-			ent.worldObj.setBlock((int)(ent.posX), (int)(ent.posY) - 1, (int)(ent.posZ), mod_Footpaths.dirtPathBlock);
+		if(ent.onGround && ent.worldObj.getBlock((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ) == Blocks.grass){
+			ent.worldObj.setBlock((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, mod_Footpaths.dirtPathBlock);
 		}
-		if(ent.onGround && ent.worldObj.getBlock((int)(ent.posX), (int)(ent.posY) - 1, (int)(ent.posZ)) == mod_Footpaths.dirtPathBlock){
+		if(ent.onGround && ent.worldObj.getBlock((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ) == mod_Footpaths.dirtPathBlock){
 			if(ent.prevPosX != ent.posX || ent.prevPosY != ent.posY || ent.prevPosZ != ent.posZ){
-				int meta = ent.worldObj.getBlockMetadata((int)(ent.posX), (int)(ent.posY) - 1, (int)(ent.posZ));
+				int meta = ent.worldObj.getBlockMetadata((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ);
 				if(meta == 15){
 					return;
 				}
 				if(rand.nextInt(100) == 0 || true){
-					System.out.println("Levelling up to " + (meta + 1));
-					ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX), (int)(ent.posY) - 1, (int)(ent.posZ), meta + 1, 0x02);				
+					ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 				}
 			}
 		}
