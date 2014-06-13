@@ -58,7 +58,6 @@ public class ForgeListener {
 					return;
 				}
 				if(rand.nextInt(100) == 0 || true){
-					System.out.println("Levelling up to " + (meta + 1));
 					ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 				}
 			}
