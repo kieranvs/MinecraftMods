@@ -34,7 +34,6 @@ public class ForgeListener {
 	public void MobUpdate(LivingEvent.LivingUpdateEvent evt){
 		if(evt.entity instanceof EntityPlayer){
 			sendPacket((int)evt.entity.prevPosX, (int)evt.entity.posX, (int)evt.entity.prevPosY, (int)evt.entity.posY, (int)evt.entity.prevPosZ, (int)evt.entity.posZ);
-			System.out.println(isPlayerMoving);
 			doTheThing(3, evt.entity, 0, -2, 0);
 		} 
 		if(evt.entity instanceof EntitySheep){
@@ -68,7 +67,7 @@ public class ForgeListener {
 					if(meta == 15){
 						return;
 					}
-					if(rand.nextInt(40/fatty) == 0){ 
+					if(rand.nextInt(20/fatty) == 0){ 
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
 				}
