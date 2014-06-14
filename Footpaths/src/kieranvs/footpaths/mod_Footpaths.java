@@ -1,5 +1,7 @@
 package kieranvs.footpaths;
 
+import java.util.EnumMap;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import kieranvs.footpaths.client.FootpathsTab;
@@ -12,8 +14,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.FMLEmbeddedChannel;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = mod_Footpaths.modid, name = "Footpaths", version = mod_Footpaths.version)
 public class mod_Footpaths {
@@ -28,6 +33,8 @@ public class mod_Footpaths {
 
 	public static BlockDirtPath dirtPathBlock;
 	
+	public static EnumMap<Side, FMLEmbeddedChannel> ChannelFootpathsGeneral;
+	
 	@Instance("Footpaths")
 	public static mod_Footpaths instance;
 
@@ -36,6 +43,8 @@ public class mod_Footpaths {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		NetworkHandler handler = new NetworkHandler();
+		mod_Footpaths.ChannelFootpathsGeneral = NetworkRegistry.INSTANCE.newChannel("FootpathsGeneral", handler);
 		MinecraftForge.EVENT_BUS.register(new ForgeListener());
 	}
 
