@@ -21,7 +21,7 @@ public class BlockRenderer implements ISimpleBlockRenderingHandler {
 		}
 		else {
 			renderer.renderBlockUsingTexture(Blocks.dirt, x, y, z, mod_Footpaths.dirtPathBlock.tex[world.getBlockMetadata(x, y, z)]);
-//			renderer.renderFaceYPos(null, x, y, z, mod_Footpaths.dirtPathBlock.tex);
+//			renderer.renderFaceYPos(Blocks.dirt, x, y, z, mod_Footpaths.dirtPathBlock.tex[world.getBlockMetadata(x, y, z)]);
 		}
 
 		return true;

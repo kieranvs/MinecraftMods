@@ -23,6 +23,7 @@ public class BlockDirtPath extends Block {
 		super(Material.ground);
 		this.setCreativeTab(mod_Footpaths.tabFootpaths);
 		this.setStepSound(soundTypeGrass);
+		tex = new IIcon[16];
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class BlockDirtPath extends Block {
 
 	@Override
 	public boolean renderAsNormalBlock(){
-		return false;
+		return true; //True fixes the lighting bug, no side effects AFAIK
 	}
 
 	@Override
@@ -55,10 +56,14 @@ public class BlockDirtPath extends Block {
 		mod_Footpaths.renderPass = pass;
 		return true;
 	}
+	
+	@Override
+	public IIcon getIcon(int side, int meta){
+		return tex[15];
+	}
 
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		tex = new IIcon[16];
 		for(int x = 0; x < 16; x++){
 			tex[x] = reg.registerIcon(mod_Footpaths.modid + ":" + "paths_" + x);
 		}
