@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @Sharable
 public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> {
-	
+
 	int count = 0;
 	long last = 0;
 	long first = 0;
@@ -54,23 +55,14 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 
 	public void onServerPacketData(FMLProxyPacket packet) {
 		if (packet.channel().equals("FootpathsGeneral")){
-			int prevX = packet.payload().readInt();
-			int x = packet.payload().readInt();
-			int prevY = packet.payload().readInt();
-			int y = packet.payload().readInt();
-			int prevZ = packet.payload().readInt();
-			int z = packet.payload().readInt();
+			boolean isPlayerMoving = packet.payload().readBoolean();
 			int l = packet.payload().readInt();
 			byte[] name = new byte[l];
 			packet.payload().readBytes(name);
+			String username = new String(name);
 			
-			//do this bit client side
-			if(prevX != x || prevY != y || prevZ != z){
-				//need more than one boolean
-				ForgeListener.isPlayerMoving = true; 
-			} else {
-				ForgeListener.isPlayerMoving = false;
-			}
+			ForgeListener.isPlayerMoving.put(username, true); 
+			return;
 		}
 
 	}
