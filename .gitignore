@@ -1,15 +1,12 @@
-*.class
-
-*.classpath
-
-
-*.jar
-
-*.war
-
-*.ear
-
+*.class  
+*.classpath  
+*.jar  
+*.war  
+*.ear  
 
 CastleDecorations/.settings  
 CastleDecorations/bin  
 CastleDecorations/.classpath  
+Footpaths/.settings  
+Footpaths/bin  
+Footpaths/.classpath  

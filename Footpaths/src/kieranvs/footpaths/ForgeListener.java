@@ -21,9 +21,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ForgeListener {
 
+	//this solution only works for one player though...
 	public static boolean isPlayerMoving;
-
-	Random rand;
+	private Random rand;
 
 	public ForgeListener(){
 		rand = new Random();
@@ -32,29 +32,25 @@ public class ForgeListener {
 
 	@SubscribeEvent
 	public void MobUpdate(LivingEvent.LivingUpdateEvent evt){
-		if(evt.entity instanceof EntityPlayer){
-			sendPacket((int)evt.entity.prevPosX, (int)evt.entity.posX, (int)evt.entity.prevPosY, (int)evt.entity.posY, (int)evt.entity.prevPosZ, (int)evt.entity.posZ);
-			doTheThing(3, evt.entity, 0, -2, 0);
-		} 
-		if(evt.entity instanceof EntitySheep){
-			return; //So sheepies don't trample all their grass in farms?
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT){
+			if(evt.entity instanceof EntityPlayer){
+				sendPacket((int)evt.entity.prevPosX, (int)evt.entity.posX, (int)evt.entity.prevPosY, (int)evt.entity.posY, (int)evt.entity.prevPosZ, (int)evt.entity.posZ);
+			} 
 		}
-		if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse){
-			doTheThing(5, evt.entity, 0, -1, 0);
-		}
-		if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf || evt.entity instanceof Entity){
-			doTheThing(1, evt.entity, 0, -1, 0);
-		} 
-		else {
-			doTheThing(3, evt.entity, 0, -2, 0);
+		else{
+			if(evt.entity instanceof EntitySheep){
+				return; //So sheepies don't trample all their grass in farms?
+				//do cows need that too?
+			}
+			if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse){
+				doTheThing(5, evt.entity, 0, -1, 0);
+			}
+			if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf){
+				doTheThing(1, evt.entity, 0, -1, 0);
+			} 
+			//I got rid of else here because we can't have monster mobs trampling all the grass at night everywhere
 		}
 	}
-
-	//	@SubscribeEvent
-	//	public void PlayerUpdate(PlayerEvent evt){
-	//		System.out.println("Player");
-	//		doTheThing(3, evt.player, -1, -2, 0);
-	//	}
 
 	public void doTheThing(int fatty, Entity ent, int offsetX, int offsetY, int offsetZ){
 		if(ent.onGround && ent.worldObj.getBlock((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ) == Blocks.grass){
@@ -86,6 +82,9 @@ public class ForgeListener {
 
 	}
 
+	//why are you sending all this bs to the server every tick, then waiting for the server to work out whether the player moved?
+	//we need a solution which only sends packets when the player is actually moving
+	//and we're going to need to have an arraylist of all the players with booleans about whether they're moving or something
 	private static void sendPacket(int prevX, int x, int prevY, int y, int prevZ, int z){
 		PacketBuffer pb = new PacketBuffer(Unpooled.buffer());
 		try {

@@ -32,12 +32,16 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, FMLProxyPacket packet) throws Exception {
-		if(count == 0) first = System.currentTimeMillis();
+		//all this can be deleted later, but we need it now to measure packet counts
+		if(count == 0){
+			first = System.currentTimeMillis();
+			last = System.currentTimeMillis();
+		}
 		count++;
-		if(count % 1000 == 0){
+		if(count % 10 == 0){
 			double delta = System.currentTimeMillis() - last;
 			last = System.currentTimeMillis();
-			if(first != last && delta != 0) System.out.println(count + "packets received. approx " + (1000000D/delta) + "/sec. Avg:" + (count/(last-first)) + "/sec");			
+			if(first != last && delta != 0) System.out.println(count + "packets received. approx " + (10000D/delta) + "/sec. Avg:" + (count/(last-first)) + "/sec");			
 		}
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
 		if (side == Side.CLIENT) {
@@ -60,7 +64,9 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 			byte[] name = new byte[l];
 			packet.payload().readBytes(name);
 			
+			//do this bit client side
 			if(prevX != x || prevY != y || prevZ != z){
+				//need more than one boolean
 				ForgeListener.isPlayerMoving = true; 
 			} else {
 				ForgeListener.isPlayerMoving = false;
