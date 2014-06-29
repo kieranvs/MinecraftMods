@@ -45,17 +45,17 @@ public class ForgeListener {
 				return;
 			}
 			if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse){
-		//		doTheThing(5, evt.entity, 0, -1, 0);
+				doTheThing(5, evt.entity, 0, -1, 0);
 			}
 			if(evt.entity instanceof EntityPig){
-	//			doTheThing(2, evt.entity, 0, -1, 0);
+				doTheThing(2, evt.entity, 0, -1, 0);
 			}
 			if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf){
-//				doTheThing(1, evt.entity, 0, -1, 0);
+				doTheThing(1, evt.entity, 0, -1, 0);
 			} 
 			if(evt.entity instanceof EntityPlayer){
 				if(FMLCommonHandler.instance().getSide() == Side.SERVER){ //fix stupid sp mp inconsistency, note this is not getEffectiveSide as above, but getSide
-					doTheThing(10, evt.entity, 0, -1, -1);
+					doTheThing(10, evt.entity, 0, -1, 0);
 				}else{
 					doTheThing(10, evt.entity, 0, -1, 0);
 				}
@@ -76,7 +76,7 @@ public class ForgeListener {
 					if(meta == 15){
 						return;
 					}
-					if(rand.nextInt(100/fatty) == 0){  //TODO change
+					if(rand.nextInt(100/fatty) == 0){
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
 
@@ -88,7 +88,7 @@ public class ForgeListener {
 					if(meta == 15){
 						return;
 					}
-					if(rand.nextInt(100/fatty) == 0){  //TODO change
+					if(rand.nextInt(100/fatty) == 0){
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
 					
