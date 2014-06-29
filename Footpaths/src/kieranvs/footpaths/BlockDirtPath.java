@@ -25,6 +25,7 @@ public class BlockDirtPath extends Block {
 		super(Material.ground);
 		this.setCreativeTab(mod_Footpaths.tabFootpaths);
 		this.setStepSound(soundTypeGrass);
+		this.setHardness(0.7f);
 		tex = new IIcon[16];
 	}
 
