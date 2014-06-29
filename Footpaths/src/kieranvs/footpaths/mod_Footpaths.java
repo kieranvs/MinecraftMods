@@ -60,8 +60,6 @@ public class mod_Footpaths {
 		
 		dirtPathBlock = (BlockDirtPath) new BlockDirtPath().setBlockName("dirtPathBlock");
 		GameRegistry.registerBlock(dirtPathBlock, "dirtPathBlock");
-		
-//		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 	}
 
 	@EventHandler

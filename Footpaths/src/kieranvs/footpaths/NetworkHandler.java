@@ -61,7 +61,7 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 			packet.payload().readBytes(name);
 			String username = new String(name);
 			
-			ForgeListener.isPlayerMoving.put(username, true); 
+			ForgeListener.isPlayerMoving.put(username, isPlayerMoving); 
 			return;
 		}
 
