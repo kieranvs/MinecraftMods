@@ -15,13 +15,11 @@ public class BlockRenderer implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-
 		if(mod_Footpaths.renderPass == 0){
 			renderer.renderStandardBlock(Blocks.grass, x, y, z);
 		}
 		else {
 			renderer.renderBlockUsingTexture(Blocks.dirt, x, y, z, mod_Footpaths.dirtPathBlock.tex[world.getBlockMetadata(x, y, z)]);
-//			renderer.renderFaceYPos(Blocks.dirt, x, y, z, mod_Footpaths.dirtPathBlock.tex[world.getBlockMetadata(x, y, z)]);
 		}
 
 		return true;
