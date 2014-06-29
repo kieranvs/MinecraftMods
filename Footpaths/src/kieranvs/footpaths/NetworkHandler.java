@@ -55,13 +55,12 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 
 	public void onServerPacketData(FMLProxyPacket packet) {
 		if (packet.channel().equals("FootpathsGeneral")){
-			boolean isPlayerMoving = packet.payload().readBoolean();
 			int l = packet.payload().readInt();
 			byte[] name = new byte[l];
 			packet.payload().readBytes(name);
 			String username = new String(name);
 			
-			ForgeListener.isPlayerMoving.put(username, isPlayerMoving); 
+			ForgeListener.isPlayerMoving.put(username, true); 
 			return;
 		}
 

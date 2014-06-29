@@ -79,6 +79,8 @@ public class ForgeListener {
 					if(rand.nextInt(100/fatty) == 0){
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
+					
+					isPlayerMoving.put(player.getDisplayName(), false);
 
 					return;
 				}
@@ -100,24 +102,21 @@ public class ForgeListener {
 	}
 
 	private static void sendPacket(EntityPlayer player){
-		boolean b = false;
 
 		if((int)player.prevPosX != (int)player.posX || (int)player.prevPosY != (int)player.posY || (int)player.prevPosZ != (int)player.posZ){
-			b = true;
+			PacketBuffer pb = new PacketBuffer(Unpooled.buffer());
+			try {
+				pb.writeInt(player.getDisplayName().getBytes().length);
+				pb.writeBytes(player.getDisplayName().getBytes());
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+			C17PacketCustomPayload packet = new C17PacketCustomPayload("FootpathsGeneral", pb);
+			
+			Minecraft.getMinecraft().thePlayer.sendQueue.addToSendQueue(packet);	
 		}
 		
-		PacketBuffer pb = new PacketBuffer(Unpooled.buffer());
-		try {
-			pb.writeBoolean(b);
-			pb.writeInt(player.getDisplayName().getBytes().length);
-			pb.writeBytes(player.getDisplayName().getBytes());
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		C17PacketCustomPayload packet = new C17PacketCustomPayload("FootpathsGeneral", pb);
-		
-		Minecraft.getMinecraft().thePlayer.sendQueue.addToSendQueue(packet);	
 		return;
 	}
 
