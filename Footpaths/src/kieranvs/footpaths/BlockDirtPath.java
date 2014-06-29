@@ -41,6 +41,11 @@ public class BlockDirtPath extends Block {
         	player.getHeldItem().stackSize -= 1;
         	return true;
         }
+		if(player.getHeldItem() != null && (player.getHeldItem().getItem() == Items.wooden_hoe || player.getHeldItem().getItem() == Items.stone_hoe ||player.getHeldItem().getItem() == Items.iron_hoe || player.getHeldItem().getItem() == Items.golden_hoe || player.getHeldItem().getItem() == Items.diamond_hoe)){
+        	world.setBlock(x, y, z, Blocks.farmland, 0, 0x02);
+        	player.getHeldItem().attemptDamageItem(1, world.rand);
+        	return true;
+        }
 		return false;
     }
 
