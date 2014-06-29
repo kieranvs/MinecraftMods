@@ -54,11 +54,7 @@ public class ForgeListener {
 				doTheThing(1, evt.entity, 0, -1, 0);
 			} 
 			if(evt.entity instanceof EntityPlayer){
-				if(FMLCommonHandler.instance().getSide() == Side.SERVER){ //fix stupid sp mp inconsistency, note this is not getEffectiveSide as above, but getSide
-					doTheThing(10, evt.entity, 0, -1, 0);
-				}else{
-					doTheThing(10, evt.entity, 0, -1, 0);
-				}
+				doTheThing(5, evt.entity, 0, -1, 0);
 			}
 		}
 	}
