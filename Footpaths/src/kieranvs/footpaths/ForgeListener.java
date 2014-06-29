@@ -48,7 +48,7 @@ public class ForgeListener {
 			if(evt.entity instanceof EntityHorse){
 				EntityHorse horsey = (EntityHorse) evt.entity;
 				if(horsey.riddenByEntity != null && horsey.riddenByEntity instanceof EntityPlayer){
-					doTheThing(8, evt.entity, 0, -1, 0);
+					doTheThing(20, evt.entity, 0, -1, 0);
 					return;
 				}
 			}
@@ -86,7 +86,7 @@ public class ForgeListener {
 					if(meta == 15){
 						return;
 					}
-					if(rand.nextInt(1000/fatty) == 0){
+					if(rand.nextInt(600/fatty) == 0){
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
 					
@@ -100,7 +100,7 @@ public class ForgeListener {
 					if(meta == 15){
 						return;
 					}
-					if(rand.nextInt(3000/fatty) == 0){
+					if(rand.nextInt(1500/fatty) == 0){
 						ent.worldObj.setBlockMetadataWithNotify((int)(ent.posX) + offsetX, (int)(ent.posY) + offsetY, (int)(ent.posZ) + offsetZ, meta + 1, 0x02);				
 					}
 					
