@@ -42,22 +42,34 @@ public class ForgeListener {
 				EntityPlayer player = (EntityPlayer)evt.entity;
 				sendPacket(player);
 			} 
+			return;
 		}
 		else{
+			if(evt.entity instanceof EntityHorse){
+				EntityHorse horsey = (EntityHorse) evt.entity;
+				if(horsey.riddenByEntity != null && horsey.riddenByEntity instanceof EntityPlayer){
+					doTheThing(8, evt.entity, 0, -1, 0);
+					return;
+				}
+			}
 			if(evt.entity instanceof EntitySheep){
 				return;
 			}
 			if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse || evt.entity instanceof EntityMooshroom){
 				doTheThing(5, evt.entity, 0, -1, 0);
+				return;
 			}
 			if(evt.entity instanceof EntityPig){
 				doTheThing(2, evt.entity, 0, -1, 0);
+				return;
 			}
 			if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf || evt.entity instanceof EntityOcelot){
 				doTheThing(1, evt.entity, 0, -1, 0);
+				return;
 			} 
 			if(evt.entity instanceof EntityPlayer || evt.entity instanceof EntityVillager ){
 				doTheThing(5, evt.entity, 0, -1, 0);
+				return;
 			}
 		}
 	}
