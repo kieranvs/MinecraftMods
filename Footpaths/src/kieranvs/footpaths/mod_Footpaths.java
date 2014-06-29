@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.Side;
 public class mod_Footpaths {
 
 	public static final String modid = "footpaths";
-	public static final String version = "0.0.1";
+	public static final String version = "1.0";
 	
 	public static int renderId;
 	public static int renderPass;

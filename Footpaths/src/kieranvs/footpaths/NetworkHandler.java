@@ -33,17 +33,6 @@ public class NetworkHandler extends SimpleChannelInboundHandler<FMLProxyPacket> 
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, FMLProxyPacket packet) throws Exception {
-		//all this can be deleted later, but we need it now to measure packet counts
-		if(count == 0){
-			first = System.currentTimeMillis();
-			last = System.currentTimeMillis();
-		}
-		count++;
-		if(count % 10 == 0){
-			double delta = System.currentTimeMillis() - last;
-			last = System.currentTimeMillis();
-			if(first != last && delta != 0) System.out.println(count + "packets received. approx " + (10000D/delta) + "/sec. Avg:" + (count/(last-first)) + "/sec");			
-		}
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
 		if (side == Side.CLIENT) {
 			onClientPacketData(packet);
