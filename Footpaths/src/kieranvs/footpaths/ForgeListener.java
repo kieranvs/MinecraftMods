@@ -8,9 +8,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Blocks;
 import net.minecraft.network.PacketBuffer;
@@ -44,16 +47,16 @@ public class ForgeListener {
 			if(evt.entity instanceof EntitySheep){
 				return;
 			}
-			if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse){
+			if(evt.entity instanceof EntityCow || evt.entity instanceof EntityHorse || evt.entity instanceof EntityMooshroom){
 				doTheThing(5, evt.entity, 0, -1, 0);
 			}
 			if(evt.entity instanceof EntityPig){
 				doTheThing(2, evt.entity, 0, -1, 0);
 			}
-			if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf){
+			if(evt.entity instanceof EntityChicken || evt.entity instanceof EntityWolf || evt.entity instanceof EntityOcelot){
 				doTheThing(1, evt.entity, 0, -1, 0);
 			} 
-			if(evt.entity instanceof EntityPlayer){
+			if(evt.entity instanceof EntityPlayer || evt.entity instanceof EntityVillager ){
 				doTheThing(5, evt.entity, 0, -1, 0);
 			}
 		}
